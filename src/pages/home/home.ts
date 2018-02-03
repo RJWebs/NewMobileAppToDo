@@ -13,7 +13,7 @@ export class HomePage implements OnInit{
   }
   ngOnInit()
   {
-    this.storage.set('name', 'Rasitha');
+    this.storage.set('name', 'Jayani');
   }
    
 }
