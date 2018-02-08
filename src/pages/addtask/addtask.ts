@@ -5,48 +5,64 @@ import { TaskserviceProvider } from "../../providers/taskservice/taskservice";
 import { SqliteserviceProvider } from "../../providers/sqliteservice/sqliteservice";
 import { Storage } from '@ionic/storage';
 import { TabsPage } from "../tabs/tabs";
-/**
- * Generated class for the AddtaskPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-addtask',
   templateUrl: 'addtask.html',
 })
+
 export class AddtaskPage {
 
-  @ViewChild('content') nav: NavController;
-  rootPage:any = TabsPage;
+  tabsPage = TabsPage;
 
   todo: any = {
     taskname: '',
     description: '',
     tasktype: '',
     startdate: '',
-    enddate: ''
+    enddate: '',
+    createdate: '',
+    taskstatus: 'In Progress'
   };
 
+  todolist: any [] = [];
+  STORAGE_KEY = 'todo_item';
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public actionSheetCtrl: ActionSheetController,public sqlliteservice :SqliteserviceProvider,
-  public taskservice: TaskserviceProvider,public storage : Storage) {
+              public actionSheetCtrl: ActionSheetController,public sqlliteservice :SqliteserviceProvider,
+              public taskservice: TaskserviceProvider,public storage : Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddtaskPage');
-
   }
 
-  logForm() {
-   // console.log(this.todo);
-  //   this.storage.set('data',"ja");
-  //   this.storage.get('data').then((val) => {
-  //   console.log(val);
-  // });
-    this.taskservice.saveToDatabase(this.todo);
-    this.navCtrl.push(TabsPage);
-    //this.sqlliteservice.createDatabase();
+  addTask() {
+    this.todolist = [];
+
+    return this.storage.get(this.STORAGE_KEY).then(result => {
+      if (result) {
+
+        result.forEach(element => {
+          this.todolist.push(element);
+        });       
+        // console.log('before push: ' +this.todolist);
+
+        this.todolist.push(this.todo);
+        // console.log('after push: ' +this.todolist);
+        
+        this.storage.set(this.STORAGE_KEY, this.todolist);
+
+      } else {
+        this.todolist.push(this.todo);
+        this.storage.set(this.STORAGE_KEY, this.todolist);
+      }
+
+      this.navigateToTabsPage();
+    });
+  }
+
+  navigateToTabsPage() {
+    this.navCtrl.push(this.tabsPage);
   }
 }

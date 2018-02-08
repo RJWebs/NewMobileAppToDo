@@ -5,20 +5,14 @@
 
         <ion-col col-3>
           <button ion-button menuToggle class="menubtn">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-   
+            <ion-icon name="menu"></ion-icon>
+          </button>   
         </ion-col>
 
-         <ion-col col-5>
-           <ion-title >
+        <ion-col col-5>
+          <ion-title >
             <span class="listname">{{listType}}</span>
-    </ion-title> </ion-col>
-
-        <ion-col col-2>
-          <!--<ion-select interface="popover" [(ngModel)]="checkup" name="checkup" style="padding-top:0; padding-bottom:0; max-width:60% !important">
-            <ion-option *ngFor="let checkup of checkups">{{checkup}}</ion-option>
-          </ion-select>-->
+          </ion-title> 
         </ion-col>
 
         <ion-col col-2>
@@ -38,6 +32,15 @@
   <ion-fab bottom right>
    <button ion-fab [navPush]="addtaskPage"><ion-icon name="add"></ion-icon></button>
  </ion-fab>
+
+ <ul *ngFor='let item of todoList; let i=index'>
+   <li>{{i}}</li>
+   <li>{{item.taskname}}</li>
+   <li>{{item.description}}</li>
+   <li>{{item.tasktype}}</li>
+   <li>{{item.startdate}}</li>
+   <li>{{item.enddate}}</li>
+ </ul>
 </ion-content>
 
 

@@ -8,7 +8,7 @@
             <ion-title><span style="color:white">New Task</span></ion-title>
           </ion-col>
           <ion-col col-2>
-            <button type="submit" form="myForm" style="background-color:#488aff">
+            <button type="submit" form="taskForm" style="background-color:#488aff">
               <ion-icon name="checkmark" style="color:white; font-size:26px"></ion-icon>
             </button>
           </ion-col>
@@ -19,7 +19,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form id="myForm" (ngSubmit)="logForm()">
+  <form id="taskForm" (ngSubmit)="addTask()">
 
   <ion-list>
 
@@ -38,10 +38,10 @@
     <ion-label>Default</ion-label>
 
     <ion-select interface="action-sheet" [(ngModel)]="todo.tasktype" name="tasktype">
-      <ion-option value="p"><ion-icon name="home"></ion-icon>Personal</ion-option>
-      <ion-option value="o">Office</ion-option>
-      <ion-option value="w">Wishlist</ion-option>
-      <ion-option value="s">Shopping</ion-option>
+      <ion-option value="Personal"><ion-icon name="home"></ion-icon>Personal</ion-option>
+      <ion-option value="Office">Office</ion-option>
+      <ion-option value="Whishlist">Wishlist</ion-option>
+      <ion-option value="Shopping">Shopping</ion-option>
     </ion-select>
   </ion-item>
   

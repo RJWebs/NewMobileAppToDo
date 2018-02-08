@@ -1,18 +1,15 @@
-// import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class TaskserviceProvider {
+
   taskType : string = "All Lists";
+  // todolist : any[] = [];
 
-  todolist : string[] = [];
+  // STORAGE_KEY = 'todo_item';
 
-  storedList: any;
-
-  constructor(public storage :Storage) {
-    console.log('Hello TaskserviceProvider Provider');
-  }
+  constructor(public storage :Storage) {}
 
   setTaskType(taskType : any)
   {
@@ -24,27 +21,40 @@ export class TaskserviceProvider {
     return this.taskType;
   }
 
-  saveToDatabase(data : any)
-  {
-    this.todolist.push(data);
-   // console.log(this.todolist)
-   this.storage.set('data',this.todolist);
-    //this.getData();
-    //console.log(this.todolist);
-    //console.log(this.todolist);
+  // saveToDatabase(newtask : any)
+  // {
+  //   this.todolist = [];
 
-    // this.getData();
-  }
+  //    return this.storage.get(this.STORAGE_KEY).then(result => {
+  //     if (result) {
 
-  getData()
-  {
-    this.todolist = [];
-    
-    this.storage.get('data').then((val) => {
-      this.todolist.push(val);
-      console.log(this.todolist);
-    });
-    
-  }
+  //       result.forEach(element => {
+  //         this.todolist.push(element);
+  //       });
+        
+  //       console.log('before push: ' +this.todolist);
+
+  //       this.todolist.push(newtask);
+  //       console.log('after push: ' +this.todolist);
+        
+  //       this.storage.set(this.STORAGE_KEY, this.todolist);
+
+  //     } else {
+  //       this.todolist.push(newtask);
+  //       this.storage.set(this.STORAGE_KEY, this.todolist);
+  //     }
+  //   });
+  // }
+
+  // getFromDatabase() {
+  //   return this.storage.get(this.STORAGE_KEY).then((result) => {
+  //     this.todolist = [];
+  //     result.forEach(element => {
+  //       console.log(element);
+  //       this.todolist.push(element);
+  //     });
+  //     return result;
+  //   });
+  // }
 
 }
