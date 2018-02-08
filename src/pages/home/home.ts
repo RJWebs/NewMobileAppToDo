@@ -14,7 +14,7 @@ export class HomePage implements OnInit{
   listType: string = "All List";
   todoList: any [] = [];
   addtaskPage = AddtaskPage; 
-    STORAGE_KEY = 'todo_item'; 
+  STORAGE_KEY = 'todo_item'; 
   
   constructor(public navCtrl: NavController,public storage: Storage, public menuCtrl: MenuController, public taskservice: TaskserviceProvider) {}
 
@@ -24,10 +24,13 @@ export class HomePage implements OnInit{
     
     this.storage.get(this.STORAGE_KEY).then(result => {
       this.todoList = [];
-      result.forEach(element => {
-        console.log(element);
-        this.todoList.push(element);
-      });
+
+      if(result) {
+        result.forEach(element => {
+          console.log(element);
+          this.todoList.push(element);
+        });
+      }    
       console.log(this.todoList);
     })
   }
