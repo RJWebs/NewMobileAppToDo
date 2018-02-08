@@ -1,7 +1,11 @@
 import { Component,OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
+// import {Page} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
+import { TaskserviceProvider } from "../../providers/taskservice/taskservice";
+import { AddtaskPage } from "../addtask/addtask";
+
 
 @Component({
   selector: 'page-home',
@@ -9,24 +13,27 @@ import { MenuController } from 'ionic-angular';
 })
 export class HomePage implements OnInit{
 
-  checkup: string = "All List";
+  listType: string = "All List";
+  addtaskPage = AddtaskPage;
 
-  checkups: string[] = [
-      "All List",
-      "Personal",
-      "Work"
-  ];
+  // checkups: string[] = [
+  //     "All List",
+  //     "Personal",
+  //     "Work"
+  // ];
   
   
-  constructor(public navCtrl: NavController,public storage: Storage, public menuCtrl: MenuController) {}
+  constructor(public navCtrl: NavController,public storage: Storage, public menuCtrl: MenuController, public taskservice: TaskserviceProvider) {}
 
   ngOnInit()
   {
-    this.storage.set('name', 'daluwatte');
+    this.taskservice.getData();
+    
+    this.listType = this.taskservice.getTaskType();
   }
 
-  openMenu() {
-   this.menuCtrl.open();
- }
-   
+  navigateToAddPage()
+  {
+
+  } 
 }
