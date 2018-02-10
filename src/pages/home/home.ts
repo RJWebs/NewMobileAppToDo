@@ -15,7 +15,12 @@ export class HomePage implements OnInit{
   todoList: any [] = [];
   addtaskPage = AddtaskPage; 
   STORAGE_KEY = 'todo_item'; 
-  
+
+  showId = null;
+  color = "dark"
+  c = "checked"
+  selectedTask = null;
+
   constructor(public navCtrl: NavController,public storage: Storage, public menuCtrl: MenuController, public taskservice: TaskserviceProvider) {}
 
   ngOnInit()
@@ -33,5 +38,28 @@ export class HomePage implements OnInit{
       }    
       console.log(this.todoList);
     })
+  }
+
+  selectTask(id) {
+    console.log(id);
+    this.selectedTask = id;
+  }
+
+  changeShow(id) {
+    if(this.showId != id) {
+      this.showId = id;
+    }
+    else {
+      this.showId = null;
+    }
+  }
+
+  changeImportant(color) {
+    if(color === "dark") {
+      this.color = 'danger';
+    }
+    else {
+      this.color = 'dark';
+    }
   }
 }

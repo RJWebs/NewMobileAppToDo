@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import { TaskserviceProvider } from "../../providers/taskservice/taskservice";
@@ -50,7 +50,7 @@ export class AddtaskPage {
 
         this.todolist.push(this.todo);
         // console.log('after push: ' +this.todolist);
-        
+
         this.storage.set(this.STORAGE_KEY, this.todolist);
 
       } else {
