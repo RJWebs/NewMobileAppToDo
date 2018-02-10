@@ -1,7 +1,7 @@
 import { Component,OnInit} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { MenuController } from 'ionic-angular';
+import { MenuController, AlertController } from 'ionic-angular';
 import { TaskserviceProvider } from "../../providers/taskservice/taskservice";
 import { AddtaskPage } from "../addtask/addtask";
 
@@ -18,10 +18,11 @@ export class HomePage implements OnInit{
 
   showId = null;
   color = "dark"
-  c = "checked"
   selectedTask = null;
+  
 
-  constructor(public navCtrl: NavController,public storage: Storage, public menuCtrl: MenuController, public taskservice: TaskserviceProvider) {}
+  constructor(public navCtrl: NavController, public storage: Storage, public menuCtrl: MenuController, 
+              public taskservice: TaskserviceProvider, public alertCtrl: AlertController) {}
 
   ngOnInit()
   {
@@ -62,4 +63,35 @@ export class HomePage implements OnInit{
       this.color = 'dark';
     }
   }
+
+  showAlert(i) {
+    let task = this.todoList[i];
+
+    let icon = '';
+
+    if(task.tasktype==='Personal') {
+      icon = 'person';
+    }
+    if(task.tasktype==='Office') {
+      icon = 'briefcase';
+    }
+    if(task.tasktype==='Wishlist') {
+      icon = 'heart';
+    }
+    if(task.tasktype==='Shopping') {
+      icon = 'cart';
+    }
+
+    let alert = this.alertCtrl.create({
+      title: task.taskname,
+      message: '<p><ion-icon name="cart"></ion-icon>'+task.tasktype+'</p>' +
+                '<p>date</p>' +
+                '<p>date</p>' +
+                '<p style="color:blue !important">'+task.description+'</p>' +
+                '<p>date</p>',
+      buttons: ['Ok']
+    });
+    alert.present()
+  }
+
 }
