@@ -1,21 +1,38 @@
 
 .toolbar-background {
-  background-color: #488aff;
+  // background-color: #488aff;
+  // background-color: white;
 }
 
 .headerColor {
-    color: white;
+    // color: white;
+    color: #488aff;
     font-weight: bold;
     font-size: 18px;
 }
 
 .menubtn
 {
-  color: white;
+  // color: white;
+  color: #488aff;
 }
 
 .listname
 {
-  color: white;
+  // color: white;
+  color: gray;
 }
+
+ion-card {
+  padding: 0 !important;
+}
+
+ion-grid {
+  padding: 0 !important;
+}
+
+ion-card-header {
+  padding-bottom: 0 !important;
+}
+
 

@@ -52,7 +52,7 @@ export class AddtaskPage {
 
         this.todolist.push(this.todo);
         // console.log('after push: ' +this.todolist);
-        
+
         this.storage.set(this.STORAGE_KEY, this.todolist);
 
       } else {
