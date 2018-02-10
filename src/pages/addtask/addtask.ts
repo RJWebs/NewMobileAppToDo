@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular'
 import { TaskserviceProvider } from "../../providers/taskservice/taskservice";
@@ -37,7 +37,9 @@ export class AddtaskPage {
     console.log('ionViewDidLoad AddtaskPage');
   }
 
-  addTask() {
+  addTask(isValid : boolean) {
+    if(isValid == true)
+    {
     this.todolist = [];
 
     return this.storage.get(this.STORAGE_KEY).then(result => {
@@ -60,6 +62,7 @@ export class AddtaskPage {
 
       this.navigateToTabsPage();
     });
+    }
   }
 
   navigateToTabsPage() {

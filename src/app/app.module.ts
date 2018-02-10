@@ -15,6 +15,7 @@ import { TaskserviceProvider } from '../providers/taskservice/taskservice';
 import { AddtaskPage } from "../pages/addtask/addtask";
 import { SqliteserviceProvider } from '../providers/sqliteservice/sqliteservice';
 import { SQLite} from '@ionic-native/sqlite';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SQLite} from '@ionic-native/sqlite';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
