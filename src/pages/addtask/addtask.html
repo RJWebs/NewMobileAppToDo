@@ -40,7 +40,7 @@
     <ion-select interface="action-sheet" [(ngModel)]="todo.tasktype" name="tasktype">
       <ion-option value="Personal"><ion-icon name="home"></ion-icon>Personal</ion-option>
       <ion-option value="Office">Office</ion-option>
-      <ion-option value="Whishlist">Wishlist</ion-option>
+      <ion-option value="Wishlist">Wishlist</ion-option>
       <ion-option value="Shopping">Shopping</ion-option>
     </ion-select>
   </ion-item>
@@ -48,13 +48,13 @@
   <ion-label stacked color="primary" style="margin-left:17px;">Start Date</ion-label>
   <ion-item>
     <ion-label>Start Date</ion-label>
-    <ion-datetime displayFormat="DDD, DD MMM YYYY" [(ngModel)]="todo.startdate" name="startname"></ion-datetime>
+    <ion-datetime displayFormat="DDD, DD MMM YYYY" min="{{todayDate}}" max="2030-12-31" [(ngModel)]="todo.startdate" name="start" (ionChange)="getStartDate(todo.startdate)"></ion-datetime>
   </ion-item>
 
   <ion-label stacked color="primary" style="margin-left:17px;">End Date</ion-label>
   <ion-item>
     <ion-label>End Date</ion-label>
-    <ion-datetime displayFormat="DDD, DD MMM YYYY" [(ngModel)]="todo.enddate" name="endname"></ion-datetime>
+    <ion-datetime displayFormat="DDD, DD MMM YYYY" min="{{startDate}}" max="2030-12-31" [(ngModel)]="todo.enddate" name="end"></ion-datetime>
   </ion-item>
 
   </ion-list>

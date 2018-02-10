@@ -25,6 +25,10 @@ export class AddtaskPage {
     taskstatus: 'In Progress'
   };
 
+  todayDate :string = new Date().toISOString();
+  startDate :string = new Date().toISOString();
+  // enddateDisable = true;
+
   todolist: any [] = [];
   STORAGE_KEY = 'todo_item';
 
@@ -64,5 +68,12 @@ export class AddtaskPage {
 
   navigateToTabsPage() {
     this.navCtrl.push(this.tabsPage);
+  }
+
+  getStartDate(startdate) {  
+    // console.log('in');
+    // this.enddateDisable = false;
+    //this.startDate = startdate;
+    // console.log(startdate);
   }
 }
