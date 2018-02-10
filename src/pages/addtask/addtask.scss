@@ -11,3 +11,8 @@ ion-header ion-icon.back-button-icon.icon {
 .noBottomMargin {
     margin-bottom: 0px !important;
 }
+
+.ng-invalid.ng-pristine.ng-dirty
+{
+    border : 1px solid red !important;
+}

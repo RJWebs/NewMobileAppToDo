@@ -19,13 +19,13 @@
 </ion-header>
 
 <ion-content padding>
-  <form id="taskForm" (ngSubmit)="addTask()">
+  <form id="taskForm" (ngSubmit)="addTask(f.valid)" #f="ngForm">
 
   <ion-list>
 
   <ion-item>
     <ion-label stacked color="primary">Task Name</ion-label>
-    <ion-input type="text" placeholder="Task Name" [(ngModel)]="todo.taskname" name="taskname"></ion-input>
+    <ion-input type="text" placeholder="Task Name" [(ngModel)]="todo.taskname" name="taskname" required class="tname"></ion-input>
   </ion-item>
 
   <ion-item>
